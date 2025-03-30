@@ -46,35 +46,28 @@ def find_php_files(directory):
 def parse_php_file(file_path):
     """
     php_parser.php 스크립트를 호출하여 주어진 PHP 파일의 AST를 JSON으로 반환합니다.
-    만약 파싱 오류(예: exit status 255)가 발생하면 None을 반환합니다.
+    만약 파싱 오류가 발생하면 None을 반환합니다.
     """
     try:
-        # PHP 파일이 존재하는지 확인
         if not os.path.exists(file_path) or not os.path.isfile(file_path):
             print(f"{ConsoleColor.WARNING}Skip parsing {file_path}: File does not exist{ConsoleColor.ENDC}")
             return None
             
-        # 파일 크기 체크 (너무 큰 파일은 건너뜀)
         file_size = os.path.getsize(file_path)
-        if file_size > 1024 * 1024:  # 1MB 이상인 파일은 건너뜀
+        if file_size > 1024 * 1024:  # 1MB 이상은 건너뜀
             print(f"{ConsoleColor.WARNING}Skip parsing {file_path}: File too large ({file_size/1024:.1f}KB){ConsoleColor.ENDC}")
             return None
             
         result = subprocess.run(["php", "php_parser.php", file_path],
                                 capture_output=True, text=True)
         if result.returncode != 0:
-            # 오류 메시지를 출력하고 해당 파일은 건너뜁니다.
             print(f"{ConsoleColor.FAIL}Error parsing {file_path}: {result.stderr.strip()}{ConsoleColor.ENDC}")
             return None
-            
         if not result.stdout.strip():
-            # 출력이 비어있으면 None 반환
             print(f"{ConsoleColor.WARNING}Skip parsing {file_path}: Empty output{ConsoleColor.ENDC}")
             return None
-            
         try:
             ast_json = json.loads(result.stdout)
-            # 빈 배열이면 None 반환
             if not ast_json:
                 return None
             return ast_json
@@ -85,23 +78,59 @@ def parse_php_file(file_path):
         print(f"{ConsoleColor.FAIL}Error parsing {file_path}: {e}{ConsoleColor.ENDC}")
         return None
 
-def check_vulnerability(expr):
+# 안전 함수 목록
+SAFE_FUNCTIONS = {"esc_html", "esc_attr", "wp_kses", "esc_url", "esc_js"}
+
+def is_unsafe_expr(expr):
     """
-    AST 노드(expr)를 검사하여, echo 구문 내에서 슈퍼글로벌 변수($_GET, $_POST, $_REQUEST 등)를 직접 사용하는 경우를 취약점으로 간주합니다.
+    재귀적으로 AST 노드(expr)를 검사하여, 안전하게 이스케이프되지 않은 슈퍼글로벌 변수의 사용이 있는지 확인합니다.
+    - Expr_Variable: $_GET, $_POST, $_REQUEST가 직접 사용되면 unsafe.
+    - Expr_FuncCall: 만약 호출된 함수가 SAFE_FUNCTIONS에 포함되어 있으면 안전, 그렇지 않으면 인자들을 재귀적으로 검사.
+    - 기타 하위 노드들을 순회합니다.
     """
     if not isinstance(expr, dict):
-        return None
+        return False
     node_type = expr.get("nodeType", "")
     if node_type == "Expr_Variable":
         var_name = expr.get("name", "")
         if var_name in ["_GET", "_POST", "_REQUEST"]:
-            return f"Direct use of ${var_name} detected."
+            return True
+    if node_type == "Expr_FuncCall":
+        func_name = None
+        name_node = expr.get("name", {})
+        if isinstance(name_node, dict) and "parts" in name_node:
+            parts = name_node["parts"]
+            if isinstance(parts, list) and parts:
+                func_name = parts[-1]
+        if func_name and func_name in SAFE_FUNCTIONS:
+            return False  # 안전 함수 호출이면 safe
+        # 안전 함수가 아니라면 인자들을 체크
+        for arg in expr.get("args", []):
+            if is_unsafe_expr(arg):
+                return True
+    # 재귀적으로 모든 하위 항목 검사
+    for key, value in expr.items():
+        if isinstance(value, dict):
+            if is_unsafe_expr(value):
+                return True
+        elif isinstance(value, list):
+            for item in value:
+                if isinstance(item, dict) and is_unsafe_expr(item):
+                    return True
+    return False
+
+def check_vulnerability(expr):
+    """
+    AST 노드(expr)를 검사하여 unsafe한 사용이 있는지 확인합니다.
+    """
+    if is_unsafe_expr(expr):
+        return "Unsafe output detected without proper escaping."
     return None
 
 def analyze_ast(ast):
     """
-    AST를 재귀적으로 순회하며, echo 구문(Stmt_Echo) 내 취약점이 있는지 탐지합니다.
-    발견 시, 해당 노드의 라인 번호와 간략한 취약점 설명을 vulnerabilities 리스트에 추가합니다.
+    AST를 재귀적으로 순회하며, echo 구문(Stmt_Echo) 내에서 취약점이 있는지 탐지합니다.
+    발견 시 해당 노드의 라인 번호와 취약점 설명을 vulnerabilities 리스트에 추가합니다.
     """
     vulnerabilities = []
 
@@ -129,8 +158,8 @@ def analyze_ast(ast):
 
 def scan_php_file_for_xss_ast(file_path):
     """
-    주어진 PHP 파일을 파싱하여 AST를 얻은 후, AST 분석을 통해 XSS 취약점 정보를 리스트로 반환합니다.
-    파싱에 실패한 경우 빈 리스트를 반환합니다.
+    주어진 PHP 파일을 파싱한 후, AST 분석을 통해 XSS 취약점 정보를 리스트로 반환합니다.
+    파싱 실패 시 빈 리스트 반환.
     """
     ast = parse_php_file(file_path)
     if not ast:
@@ -140,8 +169,8 @@ def scan_php_file_for_xss_ast(file_path):
 
 def scan_plugin(plugin_dir):
     """
-    플러그인 폴더 내의 모든 PHP 파일을 대상으로 PHP AST 기반 분석을 수행합니다.
-    파일별 취약점 정보를 딕셔너리 형태로 수집하여 반환합니다.
+    플러그인 폴더 내의 모든 PHP 파일을 대상으로 AST 기반 분석을 수행하여,
+    파일별 취약점 정보를 딕셔너리로 수집하여 반환합니다.
     """
     results = {}
     php_files = find_php_files(plugin_dir)
