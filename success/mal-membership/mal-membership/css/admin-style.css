@@ -1,0 +1,233 @@
+
+/* general non-specific CSS */
+.float-right {
+    float: right;
+}
+.float-left {
+    float: left;
+}
+.clear {
+    clear: both;
+}
+.clear-left {
+    clear: left;
+}
+.clear-right {
+    clear: right;
+}
+.bold-text {
+    font-weight: bold;
+}
+div.error {
+    background-color: #FFEBE8;
+    border: 1px solid #C00;
+    padding: 8px;
+}
+.error {
+    color: #FF0000;
+}
+
+input[type=text].error {
+    border: 1px solid #FF0000;
+}
+
+.errors-found {
+    font-size: 18px;
+    padding: 4px 0px 4px 0px;
+}
+.error-item {
+    padding: 1px 0px 1px 0px;
+}
+.default-hidden {
+    display: none;
+}
+table.add-padding td {
+    padding: 4px 0px 4px 0px;
+}
+.relative-position {
+    position: relative;
+}
+div.show-hide-div {
+    position: absolute;
+    top: 20px;
+    z-index: 99999;
+    border: 1px solid #FFFFFF;
+    background-color: #FFFFFF;
+}
+ul.prize-list {
+    border-top: 2px dotted #FFFFFF;
+    padding-top: 2px;
+}
+ul.prize-list li {
+    padding: 4px;
+    margin: 0px 4px 0px 6px;
+}
+a.white-link {
+    color: #FFFFFF;
+}
+a.close-link {
+    float: right;
+    line-height: 20px;
+    position: absolute;
+    top: -5px;
+    right: -5px;
+}
+/* Color rows / li results */
+.light-grey-row{
+    background-color: #CCCCCC;
+}
+.dark-grey-row{
+    background-color: #666666;
+}
+.white-row {
+    background-color: #ECECEC;
+}
+
+.green-row {
+    background-color: #00cc33;
+}
+.blue-row {
+   background-color: #006699;
+
+}
+fieldset.admin-fieldset {
+    border: 1px solid #666666;
+    padding: 10px;
+}
+fieldset.admin-fieldset legend {
+    font-size: 18px;
+    color: #333333;
+}
+/* End color rows / li results */
+form.malForm em {
+    color: #FF0000;
+    font-size: 12px;
+}
+.center-text {
+    text-align: center;
+}
+.left-text {
+    text-align: left;
+}
+.right-text {
+    text-align: right;
+}
+div.mal-scroll-div {
+    height: 300px;
+    overflow: scroll;
+}
+
+/* Table column help with widths */
+
+table td.small-column,
+table th.small-column {
+    width: 75px;
+}
+table td.medium-column,
+table th.medium-column {
+    width: 100px;
+}
+
+table td.large-column,
+table th.large-column {
+    width: 200px;
+}
+
+table td.extralarge-column,
+table th.extralarge-column {
+    width: 300px;
+}
+div.input-description {
+    width: 140px;
+    text-align: right;
+    display: block;
+    float: left;
+    padding-right: 8px;
+}
+div.input-description em {
+    color: #FF0000;
+    margin: 0px;
+    padding: 0px;
+}
+
+.standard-table {
+    width: 800px;
+}
+.black-table-border {
+    border:  1px solid #000000;
+}
+
+/* HELP */
+div#mal-help {
+    border: 1px dashed #333333;
+    background-color: #cc9900;
+    margin: 10px;
+}
+
+div#mal-help div.mal-help-content-wrapper {
+    margin: 10px;
+    padding: 10px;
+}
+
+div#mal-help h1 {
+    margin: 8px 8px 0px 8px;
+}
+
+/* HELP SETTINGS SHOW/HIDE TABLE STRUCTURE */
+
+div#mal-toggle-view-content {
+    display: none;
+    margin: 10px;
+    padding: 10px;
+}
+
+/* Remove Plugin */
+
+div#remove_plugin_message {
+    border: 1px dashed #333333;
+    padding: 10px;
+    margin: 10px;
+    background-color: #990000;
+    color: #FFFFFF;
+}
+div#remove_plugin_message a,
+div#remove_plugin_message a:hover,
+div#remove_plugin_message a:visited
+{
+    text-decoration: underline;
+    color: #FFFFFF;
+}
+
+/* END HELP */
+
+/* Messages */
+
+div.mal-membership-message {
+    position: fixed ;
+    top: 0px;
+    border: 1px solid #000000;
+    background: #ccff33;
+    width: 80%;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+div.mal-message-content-wrapper {
+    padding: 10px;
+}
+
+/* End Messages */
+
+/* Search Members results */
+
+.search_members_results {
+
+    height: 100px;
+    width: 700px;
+    overflow: scroll;
+    display: block;
+}
+#country_code {
+    text-transform: uppercase;
+}

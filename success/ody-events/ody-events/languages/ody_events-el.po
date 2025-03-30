@@ -1,0 +1,450 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: ody_events\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-08-05 22:31+0200\n"
+"PO-Revision-Date: 2012-08-05 22:31+0200\n"
+"Last-Translator: Νότης Φραγκόπουλος <notis@korintorama.gr>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-Language: English\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Poedit-SearchPath-0: ..\n"
+
+#: ../events_form.php:4
+msgid "After submission you 'll be able to add event dates"
+msgstr "Μετά την δημοσίευση θα μπορέσετε να προσθέσετε και ημερομηνίες εκδήλωσης"
+
+#: ../events_form.php:26
+#: ../events_form.php:51
+#: ../events_form.php:96
+msgid "No Data..."
+msgstr "Δεν υπάρχουν δεδομένα..."
+
+#: ../events_form.php:31
+msgid ""
+"An error occured\\n"
+"the date was not added"
+msgstr ""
+"Παρουσιάστηκε σφάλμα\\n"
+"η ημερομηνία δεν καταχωρήθηκε"
+
+#: ../events_form.php:32
+msgid ""
+"An error occured\\n"
+"the dates were not added"
+msgstr ""
+"Παρουσιάστηκε σφάλμα\\n"
+"Οι ημερομηνίες δεν καταχωρήθηκαν"
+
+#: ../events_form.php:37
+msgid "This date already exists"
+msgstr "Η ημερομηνία αυτή υπάρχει ήδη"
+
+#: ../events_form.php:54
+msgid ""
+"An error occured\\n"
+"the date was not removed"
+msgstr ""
+"Παρουσιάστηκε σφάλμα\\n"
+"η ημερομηνία δεν αφαιρέθηκε"
+
+#: ../events_form.php:77
+msgid "The starting event date is"
+msgstr "Η ημερομηνία έναρξης της εκδήλωσης είναι"
+
+#: ../events_form.php:82
+msgid "and the event lasts for"
+msgstr "και η εκδήλωση θα διαρκέσει για"
+
+#: ../events_form.php:82
+msgid "days"
+msgstr "μέρες"
+
+#: ../events_form.php:82
+msgid "Add"
+msgstr "Προσθήκη"
+
+#: ../events_form.php:91
+msgid "Event's dates (dd/mm/yyyy)"
+msgstr "Ημερομηνίες εκδήλωσης (ηη/μμ/εεεε)"
+
+#: ../events_widget.php:10
+msgid "An Iphone style calendar for displaying the events"
+msgstr "Ημερολόγιο τύπου Iphone για την παρουσίαση εκδηλώσεων"
+
+#: ../events_widget.php:12
+msgid "Ody Events Calendar"
+msgstr "Ody Events Calendar"
+
+#: ../events_widget.php:68
+msgid "Title"
+msgstr "Τίτλος"
+
+#: ../ody_events.php:52
+msgid "Please set the <a href='admin.php?page=ody-events-plugin'>plugin's settings</a> before using it."
+msgstr "Παρακαλούμε ορίστε τις <a href='admin.php?page=ody-events-plugin'>ρυθμίσεις του plugin</a> πριν αρχίσετε να το χρησιμοποιείτε."
+
+#: ../ody_events.php:108
+msgid "The settings have been updated successfully"
+msgstr "Οι ρυθμίσεις ενημερώθηκαν επιτυχώς"
+
+#: ../ody_events.php:115
+msgid "This plugin adds events functionality to the selected post types"
+msgstr "To plugin αυτό παρέχει  την δυνατότητα καταχώρησης ημερομηνιών σε μια δημοσίευση, αν αυτή συνδέεται με κάποια εκδήλωση"
+
+#: ../ody_events.php:127
+msgid "Need more options?"
+msgstr "Χρειάζεστε περισσότερη παραμετροποίηση;"
+
+#: ../ody_events.php:130
+msgid "Get the pro version!"
+msgstr "Αποκτήστε την έκδοση Ody Events Pro!"
+
+#: ../ody_events.php:131
+msgid "The pro version includes"
+msgstr "Η έκδοση <b>Ody Events Pro</b> περιλαμβάνει"
+
+#: ../ody_events.php:133
+msgid "Custum color management for the calendar widget"
+msgstr "Δυνατότητα ορισμού δικών σας χρωμάτων στο ημερολόγιο"
+
+#: ../ody_events.php:134
+msgid "Sizing and positioning capabilities for the widget"
+msgstr "Δυνατότητα ορισμού των διαστάσεων και της θέσης του ημερολογίου"
+
+#: ../ody_events.php:135
+msgid "A handy shortcode for including the widget in post content"
+msgstr "Ένα χρηστικό shortcode για να μπορείτε να συμπεριλαμβάνεται το ημερολόγιο και μέσα στο περιεχόμενο δημοσιεύσεων"
+
+#: ../ody_events.php:136
+msgid "Multilingual capabilities for the calendar widget"
+msgstr "Δυνατότητα εμφάνισης του ημερολογίου σε διάφορες γλώσσες (εκτός της Αγγλικής)"
+
+#: ../ody_events.php:149
+msgid "Enable events for post type"
+msgstr "Ενεργοποίηση των εκδηλώσεων για τον τύπο περιεχομένου"
+
+#: ../ody_events.php:157
+msgid "Remove all plugin's data and settings on uninstall"
+msgstr "Να αφαιρεθούν όλα τα δεδομένα και οι ρυθμίσεις κατά την απεγκατάσταση αυτού του plugin"
+
+#: ../ody_events.php:164
+msgid "Save Settings"
+msgstr "Αποθήκευση ρυθμίσεων"
+
+#: ../ody_events.php:179
+msgid "Close"
+msgstr "Κλείσιμο"
+
+#: ../ody_events.php:180
+msgid "Previous"
+msgstr "Προηγούμενο"
+
+#: ../ody_events.php:181
+msgid "Next"
+msgstr "Επόμενο"
+
+#: ../ody_events.php:182
+msgid "Current Month"
+msgstr "Τρέχων μήνας"
+
+#: ../ody_events.php:184
+#: ../pro_/widget_settings.php:6
+msgid "January"
+msgstr "Ιανουάριος"
+
+#: ../ody_events.php:185
+#: ../pro_/widget_settings.php:7
+msgid "February"
+msgstr "Φεβρουάριος"
+
+#: ../ody_events.php:186
+#: ../pro_/widget_settings.php:8
+msgid "March"
+msgstr "Μάρτιος"
+
+#: ../ody_events.php:187
+#: ../pro_/widget_settings.php:9
+msgid "April"
+msgstr "Απρίλιος"
+
+#: ../ody_events.php:188
+#: ../ody_events.php:202
+#: ../pro_/widget_settings.php:10
+msgid "May"
+msgstr "Μάιος"
+
+#: ../ody_events.php:189
+#: ../pro_/widget_settings.php:11
+msgid "June"
+msgstr "Ιούνιος"
+
+#: ../ody_events.php:190
+#: ../pro_/widget_settings.php:12
+msgid "July"
+msgstr "Ιούλιος"
+
+#: ../ody_events.php:191
+#: ../pro_/widget_settings.php:13
+msgid "August"
+msgstr "Αύγουστος"
+
+#: ../ody_events.php:192
+#: ../pro_/widget_settings.php:14
+msgid "September"
+msgstr "Σεπτέμβριος"
+
+#: ../ody_events.php:193
+#: ../pro_/widget_settings.php:15
+msgid "October"
+msgstr "Οκτώβριος"
+
+#: ../ody_events.php:194
+#: ../pro_/widget_settings.php:16
+msgid "November"
+msgstr "Νοέμβριος"
+
+#: ../ody_events.php:195
+#: ../pro_/widget_settings.php:17
+msgid "December"
+msgstr "Δεκέμβριος"
+
+#: ../ody_events.php:198
+msgid "Jan"
+msgstr "Ιαν"
+
+#: ../ody_events.php:199
+msgid "Feb"
+msgstr "Φεβ"
+
+#: ../ody_events.php:200
+msgid "Mar"
+msgstr "Μαρ"
+
+#: ../ody_events.php:201
+msgid "Apr"
+msgstr "Απρ"
+
+#: ../ody_events.php:203
+msgid "Jun"
+msgstr "Ιουν"
+
+#: ../ody_events.php:204
+msgid "Jul"
+msgstr "Ιουλ"
+
+#: ../ody_events.php:205
+msgid "Aug"
+msgstr "Αυγ"
+
+#: ../ody_events.php:206
+msgid "Sep"
+msgstr "Σεπ"
+
+#: ../ody_events.php:207
+msgid "Oct"
+msgstr "Οκτ"
+
+#: ../ody_events.php:208
+msgid "Nov"
+msgstr "Νοε"
+
+#: ../ody_events.php:209
+msgid "Dec"
+msgstr "Δεκ"
+
+#: ../ody_events.php:212
+msgid "Sunday"
+msgstr "Κυριακή"
+
+#: ../ody_events.php:213
+msgid "Monday"
+msgstr "Δευτέρα"
+
+#: ../ody_events.php:214
+msgid "Tuesday"
+msgstr "Τρίτη"
+
+#: ../ody_events.php:215
+msgid "Wednesday"
+msgstr "Τετάρτη"
+
+#: ../ody_events.php:216
+msgid "Thursday"
+msgstr "Πέμπτη"
+
+#: ../ody_events.php:217
+msgid "Friday"
+msgstr "Παρασκευή"
+
+#: ../ody_events.php:218
+msgid "Saturday"
+msgstr "Σάββατο"
+
+#: ../ody_events.php:221
+#: ../pro_/widget_settings.php:25
+msgid "Sun"
+msgstr "Κυρ"
+
+#: ../ody_events.php:222
+#: ../pro_/widget_settings.php:19
+msgid "Mon"
+msgstr "Δευ"
+
+#: ../ody_events.php:223
+#: ../pro_/widget_settings.php:20
+msgid "Tue"
+msgstr "Τρι"
+
+#: ../ody_events.php:224
+#: ../pro_/widget_settings.php:21
+msgid "Wed"
+msgstr "Τετ"
+
+#: ../ody_events.php:225
+#: ../pro_/widget_settings.php:22
+msgid "Thu"
+msgstr "Πεμ"
+
+#: ../ody_events.php:226
+#: ../pro_/widget_settings.php:23
+msgid "Fri"
+msgstr "Παρ"
+
+#: ../ody_events.php:227
+#: ../pro_/widget_settings.php:24
+msgid "Sat"
+msgstr "Σαβ"
+
+#: ../ody_events.php:230
+msgctxt "Sort name of Sunday"
+msgid "S"
+msgstr "Κ"
+
+#: ../ody_events.php:231
+msgctxt "Sort name of Monday"
+msgid "M"
+msgstr "Δ"
+
+#: ../ody_events.php:232
+msgctxt "Sort name of Tuesday"
+msgid "T"
+msgstr "Τ"
+
+#: ../ody_events.php:233
+msgctxt "Sort name of Wednesday"
+msgid "W"
+msgstr "Τ"
+
+#: ../ody_events.php:234
+msgctxt "Sort name of Thirsday"
+msgid "T"
+msgstr "Π"
+
+#: ../ody_events.php:235
+msgctxt "Sort name of Friday"
+msgid "F"
+msgstr "Π"
+
+#: ../ody_events.php:236
+msgctxt "Sort name of Saturday"
+msgid "S"
+msgstr "Σ"
+
+#: ../ody_events.php:238
+msgctxt "Sort name of the word Week"
+msgid "Week"
+msgstr "Εβδομάδα"
+
+#: ../ody_events.php:279
+msgid "Events management"
+msgstr "Διαχείριση εκδηλώσεων"
+
+#: ../pro_/color_settings.php:2
+msgid "Shortcode syntax example"
+msgstr "Παράδειγμα σύνταξης shortcode"
+
+#: ../pro_/color_settings.php:6
+msgid "Calendar widget header background color"
+msgstr "Χρώμα φόντου στο header του ημερολογίου"
+
+#: ../pro_/color_settings.php:34
+msgid "Calendar widget button background color"
+msgstr "Χρώμα φόντου στα buttons του ημερολογίου"
+
+#: ../pro_/color_settings.php:61
+msgid "Calendar widget button hover background color"
+msgstr "Χρώμα φόντου στα buttons του ημερολογίου στην κατάσταση hover"
+
+#: ../pro_/color_settings.php:88
+msgid "Calendar widget event dates background color"
+msgstr "Χρώμα φόντου στις ημερομηνίες του ημερολογίου που αναφέρονται σε εκδηλώσεις"
+
+#: ../pro_/color_settings.php:115
+msgid "Calendar widget events list background color"
+msgstr "Χρώμα φόντου στον κατάλογο των εκδηλώσεων του ημερολογίου"
+
+#: ../pro_/flash_settings.php:8
+msgid "View full article"
+msgstr "Μετάβαση στο άρθρο"
+
+#: ../pro_/shortcode.php:15
+#, php-format
+msgid "%s: Widget class not found. Make sure this widget exists and the class name is correct"
+msgstr "%s: H class του Widget δεν βρέθηκε. Βεβαιωθείτε πως αυτό το widget υπάρχει και πως το όνομα της class είναι σωστό"
+
+#: ../pro_/widget_form.php:6
+msgid "Width"
+msgstr "Πλάτος"
+
+#: ../pro_/widget_form.php:9
+msgid "Left Margin"
+msgstr "Περιθώριο από τα αριστερά"
+
+#, fuzzy
+#~ msgctxt "Short name of Monday"
+
+#~ msgid "Mon"
+#~ msgstr "Δευ"
+
+#, fuzzy
+#~ msgctxt "Short name of Tuesday"
+
+#~ msgid "Tue"
+#~ msgstr "Τρι"
+
+#, fuzzy
+#~ msgctxt "Short name of Wednesday"
+
+#~ msgid "Wed"
+#~ msgstr "Τετ"
+
+#, fuzzy
+#~ msgctxt "Short name of Thursday"
+
+#~ msgid "Thu"
+#~ msgstr "Πεμ"
+
+#, fuzzy
+#~ msgctxt "Short name of Friday"
+
+#~ msgid "Fri"
+#~ msgstr "Παρ"
+
+#, fuzzy
+#~ msgctxt "Short name of Saturday"
+
+#~ msgid "Sat"
+#~ msgstr "Σαβ"
+
+#, fuzzy
+#~ msgctxt "Short name of Sunday"
+
+#~ msgid "Sun"
+#~ msgstr "Κυρ"
