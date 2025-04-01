@@ -1,0 +1,1136 @@
+[
+  {},
+  {
+    "plugin": "lh-archived-post-status",
+    "inputs": {
+      "GET": [
+        "action",
+        "post_id",
+        "redirect_to",
+        "s"
+      ],
+      "wp_query": [
+        "post_status"
+      ],
+      "POST": [
+        "_wp_statuses_status"
+      ]
+    },
+    "vulnerabilities": [
+      {
+        "source": "GET[\"post_id\"] -> $date",
+        "sink": {
+          "type": "echo",
+          "content": "date(get_option( 'date_format' ), strtotime($date))",
+          "line": 347,
+          "file": "lh-archived-post-status/lh-archived-post-status.php",
+          "context": "} else {\n\n                echo date(get_option( 'date_format' ), strtotime($date));\n\n            }\n\t\t}\n\t}\n\n    public function add_me"
+        },
+        "description": "사용자 입력 GET[\"post_id\"] -> $date이(가) echo에서 필터링 없이 출력됨",
+        "severity": "Medium"
+      },
+      {
+        "source": "POST[\"_wp_statuses_status\"] -> $stamp",
+        "sink": {
+          "type": "printf",
+          "content": "$stamp",
+          "line": 627,
+          "file": "lh-archived-post-status/includes/wp-statuses/inc/admin/classes/class-wp-statuses-admin.php",
+          "context": "ub-curtime\">\n\t\t\t\t<span id=\"timestamp\">\n\t\t\t\t\t<?php printf( $stamp, $date ); ?>\n\t\t\t\t</span>\n\n\t\t\t\t<a href=\"#edit_times"
+        },
+        "description": "사용자 입력 POST[\"_wp_statuses_status\"] -> $stamp이(가) printf에서 필터링 없이 출력됨",
+        "severity": "Medium"
+      }
+    ],
+    "vulnerable_files": [
+      "lh-archived-post-status/lh-archived-post-status.php",
+      "lh-archived-post-status/includes/wp-statuses/inc/admin/classes/class-wp-statuses-admin.php"
+    ],
+    "total_vulnerabilities": 2
+  },
+  {
+    "plugin": "protect-admin-account.2.1.3",
+    "inputs": {
+      "GET": [
+        "user_id",
+        "fs_dbg_echo",
+        "wp_theme_preview",
+        "activate-multi"
+      ],
+      "POST": [
+        "action",
+        "thp_paa_admin_settings_nonce",
+        "message_id",
+        "limit",
+        "offset"
+      ],
+      "REQUEST": [
+        "_fs_network_admin",
+        "action",
+        "_fs_blog_admin",
+        "_wp_http_referer",
+        "fs_action",
+        "plugin_id",
+        "plugin",
+        "section"
+      ],
+      "SERVER": [
+        "HOST",
+        "X_FORWARDED_PROTO",
+        "REFERER"
+      ],
+      "COOKIE": [
+        "XDEBUG_SESSION"
+      ]
+    },
+    "vulnerabilities": [
+      {
+        "source": "DOM Source (location, document.URL, etc.)",
+        "sink": {
+          "type": "DOM Sink",
+          "content": "DOM Manipulation",
+          "file": "protect-admin-account/freemius/templates/connect.php",
+          "line": 0
+        },
+        "description": "DOM 기반 XSS 취약점 발견됨",
+        "severity": "High"
+      }
+    ],
+    "vulnerable_files": [
+      "protect-admin-account/freemius/templates/connect.php"
+    ],
+    "total_vulnerabilities": 1
+  },
+  {
+    "plugin": "lh-archived-post-status",
+    "inputs": {
+      "GET": [
+        "action",
+        "post_id",
+        "redirect_to",
+        "s"
+      ],
+      "wp_query": [
+        "post_status"
+      ],
+      "POST": [
+        "_wp_statuses_status"
+      ]
+    },
+    "vulnerabilities": [
+      {
+        "type": "AI Detected",
+        "content": "<?php // LocalHero allows no intruders...",
+        "line": 1
+      },
+      {
+        "source": "GET[\"post_id\"] -> $date",
+        "sink": {
+          "type": "echo",
+          "content": "date(get_option( 'date_format' ), strtotime($date))",
+          "line": 347,
+          "file": "lh-archived-post-status/lh-archived-post-status.php",
+          "context": "} else {\n\n                echo date(get_option( 'date_format' ), strtotime($date));\n\n            }\n\t\t}\n\t}\n\n    public function add_me"
+        },
+        "description": "사용자 입력 GET[\"post_id\"] -> $date이(가) echo에서 필터링 없이 출력됨",
+        "severity": "Medium"
+      },
+      {
+        "type": "AI Detected",
+        "content": "<?php \n/**\n * Plugin Name: LH Archived Post Status\n * Plugin URI: https://lhero.org/portfolio/lh-arc...",
+        "line": 1
+      },
+      {
+        "type": "AI Detected",
+        "content": "s_exists('WP_Statuses')) {\n    \n    include_once('includes/wp-statuses/wp-statuses.php');\n    \n}\n\n\ni...",
+        "line": 16
+      },
+      {
+        "type": "AI Detected",
+        "content": "d Post Status', self::return_plugin_namespace());\n        \n    }\n    \n    \n    static function retur...",
+        "line": 43
+      },
+      {
+        "type": "AI Detected",
+        "content": "ion return_new_status_name(){\n    \n        return 'archive'; \n    \n    }\n\n    static function return...",
+        "line": 74
+      },
+      {
+        "type": "AI Detected",
+        "content": "tic function return_plugin_debugging_status(){\n        \n        return apply_filters(self::return_pl...",
+        "line": 98
+      },
+      {
+        "type": "AI Detected",
+        "content": "       \n                error_log(plugin_basename( __FILE__ ).' - '.$log);\n                \n        ...",
+        "line": 113
+      },
+      {
+        "type": "AI Detected",
+        "content": "].\":\".$_SERVER[\"SERVER_PORT\"].$_SERVER[\"REQUEST_URI\"];\n    \n    \t} else {\n    \t    \n    \t\t$pageURL ....",
+        "line": 137
+      },
+      {
+        "type": "AI Detected",
+        "content": " );\n        \n    }\n\n\n    static function get_applicable_post_types() {\n    \n        $post_types = ge...",
+        "line": 154
+      },
+      {
+        "type": "AI Detected",
+        "content": "post_types = apply_filters( 'lh_archive_post_status_get_applicable_post_types_filter', $post_types )...",
+        "line": 168
+      },
+      {
+        "type": "AI Detected",
+        "content": "apability to grant ability to view Archived content (if the status is set to non public)\n\t    *\n\t   ...",
+        "line": 193
+      },
+      {
+        "type": "AI Detected",
+        "content": "       'post_status' => array('publish'),\n            'posts_per_page' => '5',\n            'ignore_s...",
+        "line": 213
+      },
+      {
+        "type": "AI Detected",
+        "content": "et_posts();\n\n        foreach($posts as $post) {\n    \n            $my_post = array(\n                '...",
+        "line": 229
+      },
+      {
+        "type": "AI Detected",
+        "content": "time('today midnight')) and ($post_object->post_status == self::return_new_status_name())) {\n\n      ...",
+        "line": 249
+      },
+      {
+        "type": "AI Detected",
+        "content": "ect->post_status == 'publish')) {\n\n\n            $my_post = array(\n                'ID'           => ...",
+        "line": 261
+      },
+      {
+        "type": "AI Detected",
+        "content": "( ! current_user_can( 'edit_post', $post->ID ) ) {\n\t\t\n\t\t    return false;\n\t\n        }\n\n        \n    ...",
+        "line": 287
+      },
+      {
+        "type": "AI Detected",
+        "content": ":return_plugin_namespace().'-do_archive', admin_url( 'admin-ajax.php' ))) )));\n\n        return apply...",
+        "line": 300
+      },
+      {
+        "type": "AI Detected",
+        "content": "nt(time() + wp_rand( 10, 60), 'lh_archived_post_status_initial');\n    \n    }\n\n    static function re...",
+        "line": 312
+      },
+      {
+        "type": "AI Detected",
+        "content": "n, $post_id ) {\n\t\t\n\t\tif ( 'lh_archive_post_status-post_expires' == $column ) {\n\n            $date = ...",
+        "line": 334
+      },
+      {
+        "type": "AI Detected",
+        "content": "post_type($post_type)) {\n        \n            add_meta_box(self::return_plugin_namespace().\"-archive...",
+        "line": 356
+      },
+      {
+        "type": "AI Detected",
+        "content": "date = get_post_meta( $post->ID, '_'.self::return_plugin_namespace().'-post_expires', true );\n      ...",
+        "line": 371
+      },
+      {
+        "type": "AI Detected",
+        "content": "e().'-post_expires\" id=\"'.self::return_plugin_namespace().'-post_expires\" value=\"';\n        \n       ...",
+        "line": 379
+      },
+      {
+        "type": "AI Detected",
+        "content": "          \n        }\n    \n        if (!empty($_POST[self::return_plugin_namespace().\"-post_edit-nonc...",
+        "line": 400
+      },
+      {
+        "type": "AI Detected",
+        "content": ").'-post_expires', date('Y-m-d H:i:s', $expiry_time));   \n        \n            } else {\n        \n   ...",
+        "line": 408
+      },
+      {
+        "type": "AI Detected",
+        "content": "false;\n    \n        }\n\n        ?><select name=\"<?php echo self::return_opt_name().'['.$args[0].']'; ...",
+        "line": 430
+      },
+      {
+        "type": "AI Detected",
+        "content": " posts', self::return_plugin_namespace()); ?></option><?php\n        echo '</select>'.\"\\n\";\n    \n    ...",
+        "line": 436
+      },
+      {
+        "type": "AI Detected",
+        "content": "ize=\"20\" /><br/>'.__('This label will appear after the title for archived posts on the front end of ...",
+        "line": 455
+      },
+      {
+        "type": "AI Detected",
+        "content": "    'textarea_name' => self::return_opt_name().'['.$args[0].']',\n        );\n            \n        wp_...",
+        "line": 475
+      },
+      {
+        "type": "AI Detected",
+        "content": "  \n    }\n\n\n    public function add_configuration_section(){\n        \n        add_settings_field( // ...",
+        "line": 493
+      },
+      {
+        "type": "AI Detected",
+        "content": "( // The $args\n\t            self::return_publicly_available() // Should match Option ID\n            ...",
+        "line": 505
+      },
+      {
+        "type": "AI Detected",
+        "content": "/ Name of our section\n            array( // The $args\n                self::return_title_label_field...",
+        "line": 517
+      },
+      {
+        "type": "AI Detected",
+        "content": "          self::return_opt_name(), // Name of our section\n            array( // The $args\n          ...",
+        "line": 528
+      },
+      {
+        "type": "AI Detected",
+        "content": "show up on the General Settings Page\n        );\n\n        register_setting('reading',self::return_opt...",
+        "line": 541
+      },
+      {
+        "type": "AI Detected",
+        "content": "= get_post_status( $post_id );\n        \n            } else {\n        \n                $post_status =...",
+        "line": 560
+      },
+      {
+        "type": "AI Detected",
+        "content": "age_to_content($content){\n\n        if (!is_admin() && is_singular() && is_main_query()){\n           ...",
+        "line": 585
+      },
+      {
+        "type": "AI Detected",
+        "content": "elf::return_message_field_name()], $content );\n                $updated_content = apply_filters('lh_...",
+        "line": 595
+      },
+      {
+        "type": "AI Detected",
+        "content": "s,'add_message_to_content'));\n        \n    }\n\n\n\n\n\n    public function add_posts_rows($actions,$post)...",
+        "line": 617
+      },
+      {
+        "type": "AI Detected",
+        "content": " '\">' . __( 'Archive', self::return_plugin_namespace() ) . '</a>';\n\n                }\n\n             ...",
+        "line": 633
+      },
+      {
+        "type": "AI Detected",
+        "content": "d']) && is_numeric($_GET['post_id']) && !empty($_GET[self::return_plugin_namespace().'-post_edit-non...",
+        "line": 655
+      },
+      {
+        "type": "AI Detected",
+        "content": "ve capability', self::return_plugin_namespace());\n                exit;\n                \n\t\n         ...",
+        "line": 669
+      },
+      {
+        "type": "AI Detected",
+        "content": " => self::return_new_status_name(),\n            );\n\n            wp_update_post( $my_post );\n        ...",
+        "line": 683
+      },
+      {
+        "type": "AI Detected",
+        "content": "  $url = add_query_arg( self::return_plugin_namespace().'-archived_post_id', $post_id, trim($_GET['r...",
+        "line": 697
+      },
+      {
+        "type": "AI Detected",
+        "content": "us = array( 'publish', 'private' );\n\n            } else {\n\n                $post_status = array( 'pu...",
+        "line": 714
+      },
+      {
+        "type": "AI Detected",
+        "content": "$post_status = array( 'publish');\n\n            }\n            \n\t\t    $query->set( 'post_status', $pos...",
+        "line": 739
+      },
+      {
+        "type": "AI Detected",
+        "content": "));\n               \n            }\n            \n        }\n        \n        return $states;\n        \n ...",
+        "line": 759
+      },
+      {
+        "type": "AI Detected",
+        "content": "espace()).'</p>';\n\n            update_option( self::return_opt_name(), $options );\n\n        }\n\n     ...",
+        "line": 785
+      },
+      {
+        "type": "AI Detected",
+        "content": " '_lh_archive_post_status-post_expires', true );\n\n            if (empty($expiry)){\n\n                ...",
+        "line": 808
+      },
+      {
+        "type": "AI Detected",
+        "content": "         return $args;\n            \n        }\n\n        if (!empty($options[ self::return_publicly_av...",
+        "line": 835
+      },
+      {
+        "type": "AI Detected",
+        "content": "tatuses[] = 'archive';   \n    \n        return $statuses;   \n    \n    }\n\n\n\n    public function remove...",
+        "line": 857
+      },
+      {
+        "type": "AI Detected",
+        "content": " }\n    \n        return $statuses;    \n    \n    }\n\n\n\n\n    public function maybe_make_checkable($statu...",
+        "line": 881
+      },
+      {
+        "type": "AI Detected",
+        "content": "\n            $string .= \"\\n\".'<li><a rel=\"nofollow\" href=\"'.$url.'\">'.__('Archive', self::return_plu...",
+        "line": 907
+      },
+      {
+        "type": "AI Detected",
+        "content": "  $args = array(\n    \t\t    'label'                     => _x( ucwords(self::return_new_status_label(...",
+        "line": 930
+      },
+      {
+        "type": "AI Detected",
+        "content": "how_in_admin_all_list'    => true,\n    \t\t    'show_in_admin_status_list' => true,\n    \t\t    'show_in...",
+        "line": 935
+      },
+      {
+        "type": "AI Detected",
+        "content": "   \t\t\t'metabox_save_on'     => __( 'Archive on:', self::return_plugin_namespace() ),\n        \t\t\t/* t...",
+        "line": 944
+      },
+      {
+        "type": "AI Detected",
+        "content": "ived on: <b>%1$s</b>', self::return_plugin_namespace()),\n        \t\t\t'metabox_save_now'    => __( 'Ar...",
+        "line": 949
+      },
+      {
+        "type": "AI Detected",
+        "content": "    \n            add_filter( 'manage_'.$posttype.'_posts_columns', array( $this, 'admin_edit_columns...",
+        "line": 960
+      },
+      {
+        "type": "AI Detected",
+        "content": "function define_global_functions(){\n    \n        if (!function_exists(\"archive_post_link\")){ \n      ...",
+        "line": 977
+      },
+      {
+        "type": "AI Detected",
+        "content": "rn;\n            \t\t\n            \t}\n\n            \tif ( null === $text ) {\n            \t    \n          ...",
+        "line": 993
+      },
+      {
+        "type": "AI Detected",
+        "content": "st_id Post ID.\n            \t * @param string $text    Anchor text.\n            \t */\n            \t \n ...",
+        "line": 1011
+      },
+      {
+        "type": "AI Detected",
+        "content": "\n            \n        }\n        \n        if ($old_status != 'publish'){\n            \n            ret...",
+        "line": 1033
+      },
+      {
+        "type": "AI Detected",
+        "content": "           \n            }\n            \n            //for litespeed cache\n            do_action( 'lit...",
+        "line": 1053
+      },
+      {
+        "type": "AI Detected",
+        "content": "_plugin_textdomain( self::return_plugin_text_domain(), false, basename( dirname( __FILE__ ) ) . '/la...",
+        "line": 1071
+      },
+      {
+        "type": "AI Detected",
+        "content": "dd a section to the reading settings\n        add_action('admin_init', array($this,'add_configuration...",
+        "line": 1078
+      },
+      {
+        "type": "AI Detected",
+        "content": "save_post', array($this,'update_post_details'),10,3);\n        \n        //add messages and labels to ...",
+        "line": 1088
+      },
+      {
+        "type": "AI Detected",
+        "content": "t for archiving posts\n\t\tadd_action( 'wp_ajax_'.self::return_plugin_namespace().'-do_archive', array(...",
+        "line": 1098
+      },
+      {
+        "type": "AI Detected",
+        "content": "_run', array($this,'run_processes'));\n        add_action( 'lh_archived_post_status_initial', array($...",
+        "line": 1108
+      },
+      {
+        "type": "AI Detected",
+        "content": "afely be ignored for the vast majority\n        */\n        \n        //add archive post status to the ...",
+        "line": 1118
+      },
+      {
+        "type": "AI Detected",
+        "content": "e_get_applicable_post_statuses', array($this,'maybe_make_waybackable'), 10, 1);\n\n        //maybe che...",
+        "line": 1128
+      },
+      {
+        "type": "AI Detected",
+        "content": " /**\n        * The following hook is just to ensure the plugin plays nice with WP Super Cache and Li...",
+        "line": 1139
+      },
+      {
+        "type": "AI Detected",
+        "content": "get_instance(){\n        if (null === self::$instance) {\n            self::$instance = new self();\n  ...",
+        "line": 1156
+      },
+      {
+        "type": "AI Detected",
+        "content": "\n                restore_current_blog();\n            \n            } \n        \n        } else {\n\n\n   ...",
+        "line": 1175
+      },
+      {
+        "type": "AI Detected",
+        "content": "    restore_current_blog();\n            \n            } \n\n        } else {\n\n            self::remove_...",
+        "line": 1201
+      },
+      {
+        "type": "AI Detected",
+        "content": "st_status_plugin::get_instance();\n\nregister_activation_hook(__FILE__, array('LH_archived_post_status...",
+        "line": 1233
+      },
+      {
+        "type": "AI Detected",
+        "content": "<?php\n/*\nPlugin Name: WP Statuses\nPlugin URI: https://imathi.eu/tag/wp-statuses/\nDescription: Sugges...",
+        "line": 1
+      },
+      {
+        "type": "AI Detected",
+        "content": "\n * @package WP Statuses\n *\n * @since 1.0.0\n */\nfinal class WP_Statuses {\n\n\t/**\n\t * Plugin's main in...",
+        "line": 23
+      },
+      {
+        "type": "AI Detected",
+        "content": "1.6\n\t *\n\t * @param string $key Key to check the set status for.\n\t * @return bool\n\t */\n\tpublic functi...",
+        "line": 58
+      },
+      {
+        "type": "AI Detected",
+        "content": "plugin global variable.\n\t *\n\t * @since 2.1.6\n\t *\n\t * @param string $key   Key to set a value for.\n\t ...",
+        "line": 85
+      },
+      {
+        "type": "AI Detected",
+        "content": "class.\n\t *\n\t * @since 1.0.0\n\t *\n\t * @return object A single instance of this class.\n\t */\n\tpublic sta...",
+        "line": 110
+      },
+      {
+        "type": "AI Detected",
+        "content": "\t$this->basename  = plugin_basename( $this->file );\n\n\t\t// Path and URL\n\t\t$this->dir     = plugin_dir...",
+        "line": 140
+      },
+      {
+        "type": "AI Detected",
+        "content": " to have a preview about how custom statuses\n\t\t * are managed by the plugin using:\n\t\t * add_filter( ...",
+        "line": 160
+      },
+      {
+        "type": "AI Detected",
+        "content": "0\n\t */\n\tprivate function setup_hooks() {\n\t\tadd_action( 'init', 'wp_statuses_register_password_protec...",
+        "line": 177
+      },
+      {
+        "type": "AI Detected",
+        "content": "\t *\n\t * @since 1.0.0\n\t */\n\tpublic function load_textdomain() {\n\t\tload_plugin_textdomain( $this->doma...",
+        "line": 195
+      },
+      {
+        "type": "AI Detected",
+        "content": "parts[2] ) ) {\n\t\t\t$folder = $parts[2];\n\t\t}\n\n\t\t$path = $this->inc_dir . \"{$folder}/classes/class-{$na...",
+        "line": 219
+      },
+      {
+        "type": "AI Detected",
+        "content": "<?php\n/**\n * WP Statuses Functions.\n *\n * @package WP Statuses\\inc\\core\n *\n * @since 1.0.0\n */\n\n// E...",
+        "line": 1
+      },
+      {
+        "type": "AI Detected",
+        "content": "suffix.\n *\n * @since  1.0.0\n *\n * @return string the JS minified suffix.\n */\nfunction wp_statuses_mi...",
+        "line": 36
+      },
+      {
+        "type": "AI Detected",
+        "content": "/\nfunction wp_statuses_get_supported_post_types() {\n\t// All Post Types using the WordPress UI except...",
+        "line": 65
+      },
+      {
+        "type": "AI Detected",
+        "content": " @since 1.2.1\n *\n * @param  string  $post_type The name of the Post Type.\n * @return boolean        ...",
+        "line": 83
+      },
+      {
+        "type": "AI Detected",
+        "content": "filter to customize the statuses for your custom post type.\n *\n * @since  1.0.0\n *\n * @param  string...",
+        "line": 100
+      },
+      {
+        "type": "AI Detected",
+        "content": " $status_name The status name (eg: pending, draft etc..).\n\t */\n\treturn apply_filters( 'wp_statuses_g...",
+        "line": 114
+      },
+      {
+        "type": "AI Detected",
+        "content": "\n */\nfunction wp_statuses_get( $status = null ) {\n\tif ( empty( $status ) ) {\n\t\treturn null;\n\t}\n\n\tif ...",
+        "line": 126
+      },
+      {
+        "type": "AI Detected",
+        "content": "tatus ] );\n\t\t\t}\n\n\t\t\t$_status = $wp_post_statuses[ $status ];\n\t\t}\n\t}\n\n\tif ( empty( $_status ) ) {\n\t\tr...",
+        "line": 142
+      },
+      {
+        "type": "AI Detected",
+        "content": "osts. */\n\t\t'label_count'               => _n_noop( 'Password Protected <span class=\"count\">(%s)</spa...",
+        "line": 165
+      },
+      {
+        "type": "AI Detected",
+        "content": "wp-statuses' ),\n\t\t\t'inline_dropdown'  => __( 'Password', 'wp-statuses' ),\n\t\t),\n\t\t'dashicon'         ...",
+        "line": 173
+      },
+      {
+        "type": "AI Detected",
+        "content": "( 'wp_statuses_registered' );\n}\n\n/**\n * Get the registered statuses for the given post type.\n *\n * @...",
+        "line": 196
+      },
+      {
+        "type": "AI Detected",
+        "content": "ray             A filtered array containing the matching WP_Statuses_Core_Status objects.\n */\nfuncti...",
+        "line": 209
+      },
+      {
+        "type": "AI Detected",
+        "content": "tuses[ $status_name ] );\n\t\t}\n\t}\n\n\t/**\n\t * Filter here to edit the order of the displayed statuses.\n\t...",
+        "line": 222
+      },
+      {
+        "type": "AI Detected",
+        "content": "_, __( 'You need to preserve keys to customize the order.', 'wp-statuses' ), '1.3.0' );\n\t\treturn $dr...",
+        "line": 237
+      },
+      {
+        "type": "AI Detected",
+        "content": "\n\tforeach ( $wp_post_statuses as $status_name => $status ) {\n\t\tif ( ! empty( $post_type ) && ! in_ar...",
+        "line": 256
+      },
+      {
+        "type": "AI Detected",
+        "content": "an wp-admin usage or not.\n *                          Default: 'admin'.\n * @return array            ...",
+        "line": 278
+      },
+      {
+        "type": "AI Detected",
+        "content": "ing are protected\n\tif ( 'admin' === $context ) {\n\t\t$args['protected'] = true;\n\t\t$operator          =...",
+        "line": 297
+      },
+      {
+        "type": "AI Detected",
+        "content": "m string $post_type       The name of the post type, statuses are applying to.\n\t * @param string $co...",
+        "line": 319
+      },
+      {
+        "type": "AI Detected",
+        "content": "'' ) {\n\t$context = '';\n\n\tif ( is_admin() && ! wp_doing_ajax() ) {\n\t\t$context = 'admin';\n\t}\n\n\t$status...",
+        "line": 333
+      },
+      {
+        "type": "AI Detected",
+        "content": "stered for the post types.\n *                           False otherwise.\n */\nfunction wp_statuses_un...",
+        "line": 356
+      },
+      {
+        "type": "AI Detected",
+        "content": "f ( ! isset( $wp_post_statuses[ $status ]->post_type ) || ! $post_types ) {\n\t\treturn false;\n\t}\n\n\tif ...",
+        "line": 369
+      },
+      {
+        "type": "AI Detected",
+        "content": "t_post_stati( array( 'internal' => false ), 'objects' );\n\n\tforeach ( $stati as $s => $status ) {\n\t\ti...",
+        "line": 392
+      },
+      {
+        "type": "AI Detected",
+        "content": "ype', 'name' );\n\n\tforeach ( $post_types_by_status as $types ) {\n\t\t$post_types = array_merge( $post_t...",
+        "line": 412
+      },
+      {
+        "type": "AI Detected",
+        "content": "e = array();\n\n\tif ( 'post_type' !== $attribute || ! isset( $data['slug'] ) ) {\n\t\treturn $value;\n\t}\n\n...",
+        "line": 431
+      },
+      {
+        "type": "AI Detected",
+        "content": "\n *\n * @since 2.0.0\n *\n * @param  array  $data      The status data.\n * @param  string $attribute Th...",
+        "line": 449
+      },
+      {
+        "type": "AI Detected",
+        "content": " ) ) {\n\t\t$value = esc_html( $status->labels['metabox_dropdown'] );\n\t}\n\n\treturn $value;\n}\n\n/**\n * Reg...",
+        "line": 468
+      },
+      {
+        "type": "AI Detected",
+        "content": "\t'type'        => 'array',\n\t\t\t'readonly'    => true,\n\t\t),\n\t) );\n\n\tregister_rest_field( 'status', 'la...",
+        "line": 486
+      },
+      {
+        "type": "AI Detected",
+        "content": "e );\n\t\tif ( ! isset( $post_type_object->show_in_rest ) || true !== $post_type_object->show_in_rest )...",
+        "line": 502
+      },
+      {
+        "type": "AI Detected",
+        "content": " a post type is being edited inside the Block Editor.\n *              False otherwise.\n */\nfunction ...",
+        "line": 518
+      },
+      {
+        "type": "AI Detected",
+        "content": " * @param  WP_REST_Request  $request  Request object.\n * @return WP_REST_Response           The resp...",
+        "line": 538
+      },
+      {
+        "type": "AI Detected",
+        "content": "cific status for password protected posts.\n\tif ( isset( $post->post_password ) && $post->post_passwo...",
+        "line": 554
+      },
+      {
+        "type": "AI Detected",
+        "content": "\n\t}\n\n\t$response->set_data( $post_type );\n\n\treturn $response;\n}\n\n/**\n * Looks for a valid specific cu...",
+        "line": 568
+      },
+      {
+        "type": "AI Detected",
+        "content": "s_rest_prepare_for_database( $prepared_post, WP_REST_Request $request ) {\n\t$custom_status = $request...",
+        "line": 586
+      },
+      {
+        "type": "AI Detected",
+        "content": "', $prepared_post->post_type, admin_url( 'post-new.php' ) ) ),\n\t\t);\n\n\t\tif ( 'post' === $prepared_pos...",
+        "line": 595
+      },
+      {
+        "type": "AI Detected",
+        "content": "tus, as updating the status is done thanks to the `custom_status`.\n\t\t$custom_status = get_post_statu...",
+        "line": 615
+      },
+      {
+        "type": "AI Detected",
+        "content": "<?php\n...",
+        "line": 1
+      },
+      {
+        "type": "AI Detected",
+        "content": "<?php\n/**\n * WP Statuses Status' Object Class.\n *\n * @package WP Statuses\\inc\\core\\classes\n *\n * @si...",
+        "line": 1
+      },
+      {
+        "type": "AI Detected",
+        "content": "*\n\t * To customize dropdowns.\n\t *\n\t * @var array\n\t */\n\tpublic $labels = array();\n\n\n\t/**\n\t * Whether ...",
+        "line": 37
+      },
+      {
+        "type": "AI Detected",
+        "content": "y.\n\t *\n\t * @var null|bool\n\t */\n\tpublic $internal = null;\n\n\t/**\n\t * Whether posts with this status sh...",
+        "line": 68
+      },
+      {
+        "type": "AI Detected",
+        "content": "ost_type = array();\n\n\t/**\n\t * Whether to include posts in the edit listing for their post type\n\t *\n\t...",
+        "line": 100
+      },
+      {
+        "type": "AI Detected",
+        "content": "ress's List Table inline/bulk edit actions.\n\t *\n\t * @var null|bool\n\t */\n\tpublic $show_in_inline_drop...",
+        "line": 125
+      },
+      {
+        "type": "AI Detected",
+        "content": "nstruct( $status ) {\n\t\tforeach ( get_object_vars( $status ) as $key => $value ) {\n\t\t\t$this->{$key} =...",
+        "line": 152
+      },
+      {
+        "type": "AI Detected",
+        "content": "pdown = true;\n\t\t\t}\n\n\t\t\tif ( ! isset( $status->show_in_inline_dropdown ) ) {\n\t\t\t\t$this->show_in_inlin...",
+        "line": 168
+      },
+      {
+        "type": "AI Detected",
+        "content": "1: the date on which the post is to be published */\n\t\t\t'metabox_save_date'  => __( 'Publish on: <b>%...",
+        "line": 183
+      },
+      {
+        "type": "AI Detected",
+        "content": "for: <b>%1$s</b>', 'wp-statuses' ),\n\t\t\t'inline_dropdown'    => $this->label,\n\t\t) );\n\t}\n\n\t/**\n\t * Get...",
+        "line": 190
+      },
+      {
+        "type": "AI Detected",
+        "content": "sociative array keyed by status names.\n\t\t */\n\t\t$labels = apply_filters( 'wp_statuses_initial_labels'...",
+        "line": 209
+      },
+      {
+        "type": "AI Detected",
+        "content": "ate', 'wp-statuses' ),\n\t\t\t\t\t'metabox_save_on'    => __( 'Save as Private on:', 'wp-statuses' ),\n\t\t\t\t...",
+        "line": 222
+      },
+      {
+        "type": "AI Detected",
+        "content": "', 'wp-statuses' ),\n\t\t\t\t\t'metabox_save_now'   => __( 'Save as private <b>now</b>', 'wp-statuses' ),\n...",
+        "line": 228
+      },
+      {
+        "type": "AI Detected",
+        "content": "icons-edit',\n\t\t\t),\n\t\t) );\n\n\t\tif ( ! isset( $labels[ $name ] ) ) {\n\t\t\treturn null;\n\t\t}\n\n\t\treturn $lab...",
+        "line": 244
+      },
+      {
+        "source": "POST[\"_wp_statuses_status\"] -> $stamp",
+        "sink": {
+          "type": "printf",
+          "content": "$stamp",
+          "line": 627,
+          "file": "lh-archived-post-status/includes/wp-statuses/inc/admin/classes/class-wp-statuses-admin.php",
+          "context": "ub-curtime\">\n\t\t\t\t<span id=\"timestamp\">\n\t\t\t\t\t<?php printf( $stamp, $date ); ?>\n\t\t\t\t</span>\n\n\t\t\t\t<a href=\"#edit_times"
+        },
+        "description": "사용자 입력 POST[\"_wp_statuses_status\"] -> $stamp이(가) printf에서 필터링 없이 출력됨",
+        "severity": "Medium"
+      },
+      {
+        "type": "AI Detected",
+        "content": "<?php\n/**\n * WP Statuses Admin Class.\n *\n * @package WP Statuses\\admin\\classes\n *\n * @since 1.0.0\n *...",
+        "line": 1
+      },
+      {
+        "type": "AI Detected",
+        "content": "post types.\n\t *\n\t * @var string\n\t */\n\tpublic $post_type_capability = 'publish_posts';\n\n\t/**\n\t * The ...",
+        "line": 34
+      },
+      {
+        "type": "AI Detected",
+        "content": "ew self;\n\t\t}\n\n\t\treturn $wp_statuses->admin;\n\t}\n\n\t/**\n\t * Setups the action and filters to hook to\n\t ...",
+        "line": 69
+      },
+      {
+        "type": "AI Detected",
+        "content": "                        array( $this, 'register_block_editor_script' ), 1001 );\n\t\t\tadd_action( 'enqu...",
+        "line": 89
+      },
+      {
+        "type": "AI Detected",
+        "content": " 1.0.0\n\t */\n\tpublic function register_script( $press_this = '' ) {\n\n\t\t// Editor's screen\n\t\twp_regist...",
+        "line": 102
+      },
+      {
+        "type": "AI Detected",
+        "content": "_type_supported( $current_screen->post_type ) ) {\n\t\t\t\treturn;\n\t\t\t}\n\n\t\t\tif ( isset( $current_screen->...",
+        "line": 120
+      },
+      {
+        "type": "AI Detected",
+        "content": "\t\t\t\t}\n\t\t\t\t' );\n\t\t\t}\n\n\t\t\t// List tables screens\n\t\t\tif ( isset( $current_screen->base ) && 'edit' === ...",
+        "line": 139
+      },
+      {
+        "type": "AI Detected",
+        "content": "tuses[ $inline_status->name ] = $inline_status->labels['inline_dropdown'];\n\t\t\t\t}\n\n\t\t\t\t$bulk_statuses...",
+        "line": 153
+      },
+      {
+        "type": "AI Detected",
+        "content": "'       => $statuses,\n\t\t\t\t\t\t'bulk'         => $bulk_statuses,\n\t\t\t\t\t\t'bulk_default' => __( '&mdash; N...",
+        "line": 168
+      },
+      {
+        "type": "AI Detected",
+        "content": "\n\t\t\t\t}\n\n\t\t\t\t$statuses[ $pressthis_status->name ] = $pressthis_status->labels['press_this_dropdown'];...",
+        "line": 183
+      },
+      {
+        "type": "AI Detected",
+        "content": "the WordPress Publish metabox by plugin's one.\n\t *\n\t * @since  1.0.0\n\t *\n\t * @param string  $post_ty...",
+        "line": 205
+      },
+      {
+        "type": "AI Detected",
+        "content": "h_callback_args = array( '__back_compat_meta_box' => true );\n\n\t\tif ( post_type_supports( $post_type,...",
+        "line": 221
+      },
+      {
+        "type": "AI Detected",
+        "content": "k_compat_meta_box' => true,\n\t\t\t\t);\n\t\t\t}\n\t\t}\n\n\t\t// Use plugin's Publishing box instead.\n\t\tadd_meta_bo...",
+        "line": 231
+      },
+      {
+        "type": "AI Detected",
+        "content": "s->post_type_object->cap->publish_posts;\n\t\t}\n\t}\n\n\t/**\n\t * The Publishing metabox.\n\t *\n\t * @since  1....",
+        "line": 252
+      },
+      {
+        "type": "AI Detected",
+        "content": "ssword';\n\t\t}\n\n\t\t// Get the customizable labels\n\t\t$statuses_labels = wp_statuses_get_metabox_labels( ...",
+        "line": 273
+      },
+      {
+        "type": "AI Detected",
+        "content": "ses' );\n\t\twp_localize_script( 'wp-statuses', 'wpStatuses', array(\n\t\t\t'status'          => $status,\n\t...",
+        "line": 292
+      },
+      {
+        "type": "AI Detected",
+        "content": "itbox\" id=\"submitpost\">\n\t\t\t<div id=\"minor-publishing\">\n\n\t\t\t\t<?php\n\t\t\t\t/**\n\t\t\t\t * Take care of minor ...",
+        "line": 307
+      },
+      {
+        "type": "AI Detected",
+        "content": "hing-actions -->\n\t\t\t\t<div class=\"clear\"></div>\n\n\t\t\t</div><!-- #minor-publishing -->\n\n\t\t\t<div id=\"maj...",
+        "line": 326
+      },
+      {
+        "type": "AI Detected",
+        "content": "ublishing_div( $post = null, $status = '' ) {\n\t\tif ( empty( $post->post_type ) || empty( $status ) )...",
+        "line": 349
+      },
+      {
+        "type": "AI Detected",
+        "content": "=\"submit\" name=\"save\" id=\"save-post\" value=\"<?php esc_attr_e( 'Save Draft', 'wp-statuses' ); ?>\" cla...",
+        "line": 365
+      },
+      {
+        "type": "AI Detected",
+        "content": "-action\">\n\t\t\t\t\t<?php printf( '<a class=\"preview button\" href=\"%1$s\" target=\"wp-preview-%2$s\" id=\"pos...",
+        "line": 379
+      },
+      {
+        "type": "AI Detected",
+        "content": "* @since WordPress 4.4.0\n\t\t\t *\n\t\t\t * @param WP_Post $post WP_Post object for the current post.\n\t\t\t *...",
+        "line": 393
+      },
+      {
+        "type": "AI Detected",
+        "content": "st->post_type ) || empty( $current ) ) {\n\t\t\treturn;\n\t\t}\n\n\t\t$statuses = wp_statuses_get_statuses( $po...",
+        "line": 413
+      },
+      {
+        "type": "AI Detected",
+        "content": "f ( 'password' === $current && 'future' === $post->post_status ) {\n\t\t\t\t\t$value = 'future';\n\t\t\t\t}\n\t\t\t...",
+        "line": 432
+      },
+      {
+        "type": "AI Detected",
+        "content": "opdown'];\n\t\t\t}\n\n\t\t\t$options[] = '<option value=\"' . esc_attr( $value ) .'\" ' . $selected . ' data-da...",
+        "line": 451
+      },
+      {
+        "type": "AI Detected",
+        "content": ") ),\n\t\t\t);\n\t\t} else {\n\t\t\t$options[] = '</select>';\n\t\t}\n\n\t\t?>\n\t\t<div class=\"misc-pub-section\">\n\n\t\t\t<l...",
+        "line": 460
+      },
+      {
+        "type": "AI Detected",
+        "content": "\t *\n\t\t\t * @see this part of the code, around line 100 of wp-admin/includes/post.php :\n\t\t\t * if ( iss...",
+        "line": 479
+      },
+      {
+        "type": "AI Detected",
+        "content": "ing to the status.\n\t *\n\t * @since  1.0.0\n\t *\n\t * @param  WP_Post $post   The displayed Post object.\n...",
+        "line": 492
+      },
+      {
+        "type": "AI Detected",
+        "content": "rivate' !== $status && ! empty( $post->post_password ) ) {\n\t\t\t$password_class = '';\n\t\t}\n\n\t\t?>\n\t\t<div...",
+        "line": 509
+      },
+      {
+        "type": "AI Detected",
+        "content": "_sticky( $post->ID ) ); ?> />\n\t\t\t\t\t\t<label for=\"sticky\" class=\"selectit\">\n\t\t\t\t\t\t\t<?php esc_html_e( '...",
+        "line": 518
+      },
+      {
+        "type": "AI Detected",
+        "content": "attr( $post->post_password ); ?>\"  maxlength=\"255\" />\n\t\t\t\t\t<br />\n\t\t\t\t</span>\n\n\t\t\t\t<?php\n\t\t\t\t/**\n\t\t\t...",
+        "line": 528
+      },
+      {
+        "type": "AI Detected",
+        "content": "s' browser.\n\t *\n\t * @since  1.0.0\n\t *\n\t * @param  WP_Post $post   The displayed Post object.\n\t * @pa...",
+        "line": 548
+      },
+      {
+        "type": "AI Detected",
+        "content": "php.net/date */\n\t\t$datef = __( 'M j, Y @ H:i', 'wp-statuses' );\n\n\t\t// Default stamps.\n\t\t$stamps = ar...",
+        "line": 563
+      },
+      {
+        "type": "AI Detected",
+        "content": "( 'Save on: <b>%1$s</b>', 'wp-statuses' ),\n\t\t);\n\n\t\tif ( isset( $this->labels[ $status ] ) ) {\n\t\t\t$st...",
+        "line": 574
+      },
+      {
+        "type": "AI Detected",
+        "content": " = $stamps['metabox_saved_date'];\n\n\t\t\t// draft, 1 or more saves, no date specified.\n\t\t\t} elseif ( '0...",
+        "line": 589
+      },
+      {
+        "type": "AI Detected",
+        "content": "and thus no date specified).\n\t\t} else {\n\t\t\t$stamp = $stamps['metabox_save_now'];\n\t\t\t$date = date_i18...",
+        "line": 606
+      },
+      {
+        "type": "AI Detected",
+        "content": "e-if-no-js\" href=\"<?php echo esc_url( get_edit_post_link( $args['args']['revision_id'] ) ); ?>\">\n\t\t\t...",
+        "line": 618
+      },
+      {
+        "type": "AI Detected",
+        "content": " href=\"#edit_timestamp\" class=\"edit-timestamp hide-if-no-js\" role=\"button\">\n\t\t\t\t\t<span aria-hidden=\"...",
+        "line": 630
+      },
+      {
+        "type": "AI Detected",
+        "content": "rtime -->\n\n\t\t<?php\n\t\t/**\n\t\t * Fires after the post time/date setting in the Publish meta box.\n\t\t *\n\t...",
+        "line": 640
+      },
+      {
+        "type": "AI Detected",
+        "content": "on get_major_publishing_div( $post = null, $status = '' ) {\n\t\tif ( empty( $post->post_type ) || empt...",
+        "line": 662
+      },
+      {
+        "type": "AI Detected",
+        "content": "tributes' => array( 'id' => 'publish' ),\n\t\t);\n\n\t\t$default_labels = reset( $this->labels );\n\t\t$defaul...",
+        "line": 680
+      },
+      {
+        "type": "AI Detected",
+        "content": "ding' ), true ) || 0 === (int) $post->ID ) {\n\t\t\t$args = array_merge( $args, array(\n\t\t\t\t'text' => __(...",
+        "line": 695
+      },
+      {
+        "type": "AI Detected",
+        "content": "eta-boxes.php */\n\t\tdo_action( 'post_submitbox_start', $post ); ?>\n\n\t\t<div id=\"delete-action\">\n\t\t\t<?p...",
+        "line": 710
+      },
+      {
+        "type": "AI Detected",
+        "content": "bmit_button( $args['text'], $args['type'], $args['name'], $args['wrap'], $args['other_attributes'] )...",
+        "line": 723
+      },
+      {
+        "type": "AI Detected",
+        "content": "ject( $_POST['_wp_statuses_status'] );\n\n\t\tif ( ! $status ) {\n\t\t\treturn $post_data;\n\t\t}\n\n\t\treturn arr...",
+        "line": 742
+      },
+      {
+        "type": "AI Detected",
+        "content": "t-post',\n\t\t\t\t'wp-i18n',\n\t\t\t\t'wp-plugins',\n\t\t\t\t'lodash',\n\t\t\t),\n\t\t\twp_statuses_version()\n\t\t);\n\n\t\t$test...",
+        "line": 768
+      },
+      {
+        "type": "AI Detected",
+        "content": "ure_control  = '';\n\t\t$required_status = wp_statuses_get( 'publish' );\n\n\t\tif ( ! in_array( $post_type...",
+        "line": 790
+      },
+      {
+        "type": "AI Detected",
+        "content": "tor-post-switch-to-draft { display: none }\n\t\t\t.components-panel__row.wp-statuses-info { display: blo...",
+        "line": 802
+      },
+      {
+        "type": "AI Detected",
+        "content": "e to preload into the Block Editor.\n\t *\n\t * @since 2.0.0\n\t *\n\t * @param  array $paths The list of RE...",
+        "line": 816
+      },
+      {
+        "type": "AI Detected",
+        "content": "<h1><?php echo esc_html(get_admin_page_title()); ?></h1>\n<form name=\"form1\" method=\"post\" action=\"\">...",
+        "line": 1
+      },
+      {
+        "type": "AI Detected",
+        "content": "\"<?php echo self::return_publicly_available(); ?>\">\n<option value=\"1\" <?php  if ($options[self::retu...",
+        "line": 7
+      },
+      {
+        "type": "AI Detected",
+        "content": "e(); ?>\"><?php _e(\"Title Label:\", self::return_plugin_namespace()); ?></label>\n</th>\n<td><input type...",
+        "line": 14
+      },
+      {
+        "type": "AI Detected",
+        "content": "r=\"<?php echo self::return_message_field_name(); ?>\"><?php _e(\"Archive Message:\", self::return_plugi...",
+        "line": 22
+      },
+      {
+        "type": "AI Detected",
+        "content": " exclude this group's members from the suggestions.\n\t\t'limit'    => 10,\n\t\t'term'     => 'Keiran',\n\t\t...",
+        "line": 40
+      }
+    ],
+    "vulnerable_files": [
+      "lh-archived-post-status/index.php",
+      "lh-archived-post-status/lh-archived-post-status.php",
+      "lh-archived-post-status/includes/wp-statuses/wp-statuses.php",
+      "lh-archived-post-status/includes/wp-statuses/inc/core/functions.php",
+      "lh-archived-post-status/includes/wp-statuses/inc/core/custom.php",
+      "lh-archived-post-status/includes/wp-statuses/inc/core/classes/class-wp-statuses-core-status.php",
+      "lh-archived-post-status/includes/wp-statuses/inc/admin/classes/class-wp-statuses-admin.php",
+      "lh-archived-post-status/partials/option-settings.php"
+    ],
+    "total_vulnerabilities": 188
+  },
+  {
+    "plugin": "lh-archived-post-status",
+    "inputs": {
+      "GET": [
+        "action",
+        "post_id",
+        "redirect_to",
+        "s"
+      ],
+      "wp_query": [
+        "post_status"
+      ],
+      "POST": [
+        "_wp_statuses_status"
+      ]
+    },
+    "vulnerabilities": [
+      {
+        "source": "GET[\"post_id\"] -> $date",
+        "sink": {
+          "type": "echo",
+          "content": "date(get_option( 'date_format' ), strtotime($date))",
+          "line": 347,
+          "file": "lh-archived-post-status/lh-archived-post-status.php",
+          "context": "} else {\n\n                echo date(get_option( 'date_format' ), strtotime($date));\n\n            }\n\t\t}\n\t}\n\n    public function add_me"
+        },
+        "description": "사용자 입력 GET[\"post_id\"] -> $date이(가) echo에서 필터링 없이 출력됨",
+        "severity": "Medium"
+      },
+      {
+        "source": "POST[\"_wp_statuses_status\"] -> $stamp",
+        "sink": {
+          "type": "printf",
+          "content": "$stamp",
+          "line": 627,
+          "file": "lh-archived-post-status/includes/wp-statuses/inc/admin/classes/class-wp-statuses-admin.php",
+          "context": "ub-curtime\">\n\t\t\t\t<span id=\"timestamp\">\n\t\t\t\t\t<?php printf( $stamp, $date ); ?>\n\t\t\t\t</span>\n\n\t\t\t\t<a href=\"#edit_times"
+        },
+        "description": "사용자 입력 POST[\"_wp_statuses_status\"] -> $stamp이(가) printf에서 필터링 없이 출력됨",
+        "severity": "Medium"
+      }
+    ],
+    "vulnerable_files": [
+      "lh-archived-post-status/lh-archived-post-status.php",
+      "lh-archived-post-status/includes/wp-statuses/inc/admin/classes/class-wp-statuses-admin.php"
+    ],
+    "total_vulnerabilities": 2
+  }
+]

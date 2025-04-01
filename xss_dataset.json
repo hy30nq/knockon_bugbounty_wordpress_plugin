@@ -1,0 +1,24 @@
+[
+    { "code": "echo $_GET['name'];", "label": 1 },
+    { "code": "print $_POST['comment'];", "label": 1 },
+    { "code": "<?= $_REQUEST['id'] ?>", "label": 1 },
+    { "code": "echo $_COOKIE['session'];", "label": 1 },
+    { "code": "echo $content;", "label": 1 },
+    { "code": "$data = $_GET['msg']; echo $data;", "label": 1 },
+    { "code": "$comment = $_POST['cmt']; print $comment;", "label": 1 },
+    { "code": "$msg = $_REQUEST['text']; echo $msg;", "label": 1 },
+    { "code": "$output = $_COOKIE['name']; echo $output;", "label": 1 },
+    { "code": "$html = $_GET['html']; echo $html;", "label": 1 },
+  
+    { "code": "echo htmlspecialchars($_GET['name']);", "label": 0 },
+    { "code": "print htmlentities($_POST['comment']);", "label": 0 },
+    { "code": "$id = intval($_REQUEST['id']); echo $id;", "label": 0 },
+    { "code": "$c = sanitize_text_field($_POST['comment']); echo $c;", "label": 0 },
+    { "code": "echo esc_html($_GET['input']);", "label": 0 },
+    { "code": "$user = strip_tags($_COOKIE['user']); echo $user;", "label": 0 },
+    { "code": "echo filter_var($_GET['param'], FILTER_SANITIZE_STRING);", "label": 0 },
+    { "code": "$v = esc_attr($_POST['title']); echo $v;", "label": 0 },
+    { "code": "$safe = htmlspecialchars($data); echo $safe;", "label": 0 },
+    { "code": "$output = wp_kses($_POST['desc'], array()); echo $output;", "label": 0 }
+  ]
+  

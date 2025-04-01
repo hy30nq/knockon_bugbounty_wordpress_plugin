@@ -1,0 +1,229 @@
+# Copyright (C) 2025 Keystroke Click
+# This file is distributed under the same license as the Protect Admin plugin.
+msgid ""
+msgstr ""
+"Project-Id-Version: Protect Admin 2.1.3\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/protect-admin-account\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2025-01-27T23:11:41+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.10.0\n"
+"X-Domain: protect-admin-account\n"
+
+#. Plugin Name of the plugin
+#: C:\Users\SYGW\Local Sites\proximity\app\public\wp-content\plugins\protect-admin-account\index.php
+#: includes/paa-options.php:12
+msgid "Protect Admin"
+msgstr ""
+
+#. Plugin URI of the plugin
+#: C:\Users\SYGW\Local Sites\proximity\app\public\wp-content\plugins\protect-admin-account\index.php
+msgid "https://protectadmin.com/plugin/protect-admin-account-pro-wordpress-plugin/"
+msgstr ""
+
+#. Description of the plugin
+#: C:\Users\SYGW\Local Sites\proximity\app\public\wp-content\plugins\protect-admin-account\index.php
+msgid "Protect admin accounts from being deleted or modified by other users."
+msgstr ""
+
+#. Author of the plugin
+#: C:\Users\SYGW\Local Sites\proximity\app\public\wp-content\plugins\protect-admin-account\index.php
+msgid "Keystroke Click"
+msgstr ""
+
+#. Author URI of the plugin
+#: C:\Users\SYGW\Local Sites\proximity\app\public\wp-content\plugins\protect-admin-account\index.php
+msgid "https://keystrokeclick.com/"
+msgstr ""
+
+#: includes/paa-options.php:11
+#: includes/paa-options.php:22
+#: includes/paa-options.php:78
+msgid "Protect Admin Settings"
+msgstr ""
+
+#: includes/paa-options.php:23
+#: index.php:65
+msgid "Settings"
+msgstr ""
+
+#: includes/paa-options.php:31
+#: includes/paa-options.php:293
+msgid "Protect Admin Logs"
+msgstr ""
+
+#: includes/paa-options.php:32
+msgid "Logs"
+msgstr ""
+
+#. translators: 1: and 2: are strong html format, and 3: is URL
+#: includes/paa-options.php:49
+msgid "Give %1$sProtect Admin%2$s a review! %3$s We really appreciate your support!"
+msgstr ""
+
+#: includes/paa-options.php:91
+msgid "Admin Accounts"
+msgstr ""
+
+#: includes/paa-options.php:120
+msgid "Tick the user account(s) you want to protect. Only administrator accounts can be protected."
+msgstr ""
+
+#: includes/paa-options.php:125
+msgid "Email Notification"
+msgstr ""
+
+#. translators: %s: is href for pro-version
+#: includes/paa-options.php:137
+msgid "Enable email notifications? (PRO only) <a href=\"%s\">Upgrade to PRO</a>"
+msgstr ""
+
+#: includes/paa-options.php:144
+msgid "Enable email notifications? (PRO only)"
+msgstr ""
+
+#: includes/paa-options.php:150
+msgid "Get notified by email when someone attempts to modify your protected admin accounts."
+msgstr ""
+
+#: includes/paa-options.php:155
+msgid "Protect Plugins"
+msgstr ""
+
+#. translators: %s: is url for pro-version
+#: includes/paa-options.php:165
+msgid "Allow plugin installation and removal by protected admins (disables for all other users) (Requires active PRO license) <a href=\"%s\">Upgrade to PRO</a>"
+msgstr ""
+
+#: includes/paa-options.php:172
+msgid "Allow plugin installation and removal by protected admins (disables for all other users) (Requires active PRO license)"
+msgstr ""
+
+#: includes/paa-options.php:181
+msgid "Protect Posts & Pages"
+msgstr ""
+
+#: includes/paa-options.php:186
+msgid "Prevent posts published by protected admins from being edited or deleted."
+msgstr ""
+
+#. translators: %s: is href for pro-version
+#: includes/paa-options.php:198
+msgid "Prevent pages published by protected admins from being edited or deleted. (Requires active PRO license) <a href=\"%s\">Upgrade to PRO</a>"
+msgstr ""
+
+#: includes/paa-options.php:205
+msgid "Prevent pages published by protected admins from being edited or deleted. (Requires active PRO license)"
+msgstr ""
+
+#: includes/paa-options.php:214
+msgid "Buddypress"
+msgstr ""
+
+#. translators: %s: is href for pro-version
+#: includes/paa-options.php:227
+msgid "Prevent activities posted by protected admins from being edited or deleted. (PRO only) <a href=\"%s\">Upgrade to PRO</a>"
+msgstr ""
+
+#: includes/paa-options.php:234
+msgid "Prevent activities posted by protected admins from being edited or deleted. (PRO only)"
+msgstr ""
+
+#. translators: %s: is href for pro-version
+#: includes/paa-options.php:251
+msgid "Prevent groups created by protected admins from being edited or deleted. (PRO only) <a href=\"%s\">Upgrade to PRO</a>"
+msgstr ""
+
+#: includes/paa-options.php:258
+msgid "Prevent groups created by protected admins from being edited or deleted. (PRO only)"
+msgstr ""
+
+#: includes/paa-options.php:273
+msgid "Save"
+msgstr ""
+
+#: includes/paa-options.php:304
+msgid "Logged Actions"
+msgstr ""
+
+#: includes/paa-options.php:309
+msgid "When someone attempts to edit your protected admin accounts, the attempted actions are logged. The last one attempted action is shown below."
+msgstr ""
+
+#: includes/paa-options.php:312
+msgid "When someone attempts to edit your protected admin accounts, the attempted actions are logged. The last attempted actions are shown below. You can see full log in /wp-content/uploads/paa-log/paa-log.txt."
+msgstr ""
+
+#: includes/paa-options.php:331
+#: includes/paa-options.php:381
+msgid "No attempted actions recorded."
+msgstr ""
+
+#. translators: %s: is href for pro-version
+#: includes/paa-options.php:394
+msgid "To see FULL LOG of the attempted actions, please <a href=\"%s\">upgrade to PRO</a>."
+msgstr ""
+
+#: includes/paa-options.php:435
+msgid "Sorry, you are not allowed to edit the settings."
+msgstr ""
+
+#: includes/paa-options.php:449
+msgid "One or more user selected is not admin. All users selected must be admin. Settings are not saved."
+msgstr ""
+
+#: includes/paa-options.php:464
+msgid "Settings have been updated successfully!"
+msgstr ""
+
+#: includes/paa-options.php:469
+msgid "Oops, something went wrong. Try saving your settings again."
+msgstr ""
+
+#: includes/paa-options.php:475
+msgid "Settings have been updated!"
+msgstr ""
+
+#: includes/paa-options.php:481
+msgid "No changes."
+msgstr ""
+
+#: includes/paa-options.php:485
+msgid "Settings are not saved."
+msgstr ""
+
+#: includes/paa-options.php:492
+msgid "Sorry, nonce verification failed. Settings are not saved."
+msgstr ""
+
+#: includes/paa-options.php:516
+msgid "Affiliates"
+msgstr ""
+
+#: includes/paa-protection-users.php:26
+msgid "Sorry, you are not allowed to change this user’s email."
+msgstr ""
+
+#: includes/paa-protection-users.php:61
+#: includes/paa-protection-users.php:124
+msgid "Sorry, you are not allowed to edit this user."
+msgstr ""
+
+#. translators: %s: is for name
+#: includes/paa-protection-users.php:94
+msgid "Sorry, you are not allowed to delete user %s. If you are deleting users in bulk, some users before this might have been successfully deleted."
+msgstr ""
+
+#. translators: %s: is for name
+#: includes/paa-protection-users.php:216
+msgid "Sorry, you are not allowed to change role of user %s."
+msgstr ""
+
+#. translators: %s: is href for pro-version
+#: index.php:101
+msgid "There is a new update available for Protect Admin Pro. Please login to <a href=\"%s\" target=\"_blank\" rel=\"noopener noreferrer\">your account</a>  to download the latest version."
+msgstr ""
