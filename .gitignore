@@ -8,5 +8,5 @@
 vendor/
 plugins/*
 success/
-
+temp/*
 
