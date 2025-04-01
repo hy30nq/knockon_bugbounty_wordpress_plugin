@@ -430,11 +430,18 @@ def scan_plugin(plugin_path, progress=None, task_id=None, tokenizer=None, model=
 def append_to_results(result):
     # 기존 결과 파일 읽기
     if os.path.exists(RESULT_JSON_FILE):
-        with open(RESULT_JSON_FILE, 'r', encoding='utf-8') as f:
-            try:
-                all_results = json.load(f)
-            except json.JSONDecodeError:
-                all_results = []
+        try:
+            with open(RESULT_JSON_FILE, 'r', encoding='utf-8') as f:
+                data = json.load(f)
+                # 데이터가 리스트가 아닌 경우 리스트로 변환
+                if isinstance(data, dict):
+                    all_results = [data]
+                elif isinstance(data, list):
+                    all_results = data
+                else:
+                    all_results = []
+        except (json.JSONDecodeError, FileNotFoundError):
+            all_results = []
     else:
         all_results = []
     
